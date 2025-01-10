@@ -47,11 +47,23 @@ jobs:
           echo $VENCORD_BUILDS_COMMIT
           curl -fsSL "https://raw.githubusercontent.com/Vencord/builds/$VENCORD_BUILDS_COMMIT/plugins.json" > out/vencord/plugins.json
 
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: vencord
+          path: out/
+
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     needs: [vencord]
     steps:
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+
+      - run: |
+        ls $GITHUB_WORKSPACE
+
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
