@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 'Vendicated/Vencord'
-          ref: '${{ env.VENCORD_COMMIT }}'
+          ref: ${{ env.VENCORD_COMMIT }}
           path: 'in/vencord'
 
       - name: Create Vencord plugin artifacts
@@ -67,7 +67,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '${{ env.GITHUB_WORKSPACE }}'
+          path: ${{ github.workspace }}
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
