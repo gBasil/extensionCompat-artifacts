@@ -21,8 +21,8 @@ jobs:
       - name: Get latest commit
         run: |
           COMMITS=$(curl -fsSL https://api.github.com/repos/Vencord/builds/commits)
-          echo "VENCORD_BUILDS_COMMIT=$(echo $COMMITS | jq -r '.[0].commit.sha')" >> $"GITHUB_ENV"
-          echo "VENCORD_COMMIT=$(echo $COMMITS | jq -r '.[0].commit.message | match("https://github\\\\.com/Vendicated/Vencord/commit/(\\\\w+)").captures[0].string')" >> "$GITHUB_ENV"
+          echo "VENCORD_BUILDS_COMMIT=$(echo $COMMITS | jq -r '.[0].commit.sha')" >> $GITHUB_ENV
+          echo "VENCORD_COMMIT=$(echo $COMMITS | jq -r '.[0].commit.message | match("https://github\\\\.com/Vendicated/Vencord/commit/(\\\\w+)").captures[0].string')" >> $GITHUB_ENV
 
       - uses: actions/checkout@v4
         with:
