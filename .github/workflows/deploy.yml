@@ -24,7 +24,7 @@ jobs:
           echo "VENCORD_BUILDS_COMMIT=$(echo $COMMITS | jq -r '.[0].commit.sha')" >> $GITHUB_ENV
           echo "VENCORD_COMMIT=$(echo $COMMITS | jq -r '.[0].commit.message | match("https://github\\\\.com/Vendicated/Vencord/commit/(\\\\w+)").captures[0].string')" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v4
         with:
           repository: 'Vendicated/Vencord'
           ref: '${{ env.VENCORD_COMMIT }}'
@@ -52,7 +52,7 @@ jobs:
     needs: [vencord]
     steps:
       - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
