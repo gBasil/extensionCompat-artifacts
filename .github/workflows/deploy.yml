@@ -25,9 +25,10 @@ jobs:
           echo "VENCORD_COMMIT=$(echo $COMMITS | jq -r '.[0].commit.message | match("https://github\\\\.com/Vendicated/Vencord/commit/(\\\\w+)").captures[0].string')" >> $GITHUB_ENV
 
       - uses: actions/checkout@v5
-        repository: 'Vendicated/Vencord'
-        ref: '${{ env.VENCORD_COMMIT }}'
-        path: 'in/vencord'
+        with:
+          repository: 'Vendicated/Vencord'
+          ref: '${{ env.VENCORD_COMMIT }}'
+          path: 'in/vencord'
 
       - name: Create Vencord plugin artifacts
         run: |
