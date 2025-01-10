@@ -44,7 +44,8 @@ jobs:
 
       - name: Create vencord.json
         run: |
-          curl -fsSL https://raw.githubusercontent.com/Vencord/builds/$VENCORD_BUILDS_COMMIT/plugins.json > out/vencord/plugins.json
+          echo $VENCORD_BUILDS_COMMIT
+          curl -fsSL "https://raw.githubusercontent.com/Vencord/builds/$VENCORD_BUILDS_COMMIT/plugins.json" > out/vencord/plugins.json
 
   deploy:
     name: Deploy to GitHub Pages
