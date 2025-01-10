@@ -62,7 +62,7 @@ jobs:
         uses: actions/download-artifact@v4
 
       - run: |
-        ls $GITHUB_WORKSPACE
+          ls $GITHUB_WORKSPACE
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
