@@ -44,7 +44,7 @@ jobs:
 
       - name: Create vencord.json
         run: |
-          curl -fsSL "https://raw.githubusercontent.com/Vencord/builds/$VENCORD_BUILDS_COMMIT/plugins.json" | jq -c 'map(select(.filePath | startswith("_") | not)) | map({ id: .filePath, name, description, tags, authors: .authors | map({ name, discordId: .id }) })' > out/vencord/plugins.json
+          curl -fsSL "https://raw.githubusercontent.com/Vencord/builds/$VENCORD_BUILDS_COMMIT/plugins.json" | jq -c 'map(select(.filePath | startswith("_") | not)) | map({ id: .filePath, name, description, tags, authors: .authors | map({ name, discordId: .id }) | map(if .discordId != "0" then . else del(.discordId) end) })' > out/vencord/plugins.json
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
